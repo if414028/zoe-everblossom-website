@@ -6,7 +6,14 @@ import { Product } from "@/src/data/products";
 import { ProductGrid } from "@/src/components/ProductCard";
 import { cn } from "@/src/components/utils";
 
-const filters = ["Semua", "Mini", "Classic", "Signature", "Hadiah"] as const;
+const filters = [
+  "Semua",
+  "Mini",
+  "Classic",
+  "Signature",
+  "Hampers",
+  "Hadiah",
+] as const;
 const sortOptions = [
   { label: "Pilihan Utama", value: "featured" },
   { label: "Harga Terendah", value: "price-asc" },
@@ -36,6 +43,10 @@ export function ShopCatalog({ products }: { products: Product[] }) {
           giftText.includes("hampers") ||
           giftText.includes("perayaan")
         );
+      }
+
+      if (activeFilter === "Hampers") {
+        return product.category.toLowerCase() === "hampers";
       }
 
       return product.name.toLowerCase().includes(activeFilter.toLowerCase());

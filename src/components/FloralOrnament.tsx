@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/src/components/utils";
 
 export function FloralOrnament({ className }: { className?: string }) {
@@ -11,10 +12,36 @@ export function FloralOrnament({ className }: { className?: string }) {
   );
 }
 
-export function ProductVisual({ label }: { label: string }) {
+export function ProductVisual({
+  image,
+  label,
+  preload = false,
+}: {
+  image?: {
+    src: string;
+    alt: string;
+  };
+  label: string;
+  preload?: boolean;
+}) {
+  if (image) {
+    return (
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-[rgba(200,164,93,0.32)] bg-[rgba(255,249,239,0.74)]">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          preload={preload}
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
-      className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[28px] border border-[rgba(200,164,93,0.32)] bg-[radial-gradient(circle_at_28%_18%,rgba(221,166,161,0.38),transparent_24%),radial-gradient(circle_at_78%_24%,rgba(169,190,214,0.34),transparent_22%),linear-gradient(135deg,#fff9ef,#eadcc8)]"
+      className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-[28px] border border-[rgba(200,164,93,0.32)] bg-[radial-gradient(circle_at_28%_18%,rgba(221,166,161,0.38),transparent_24%),radial-gradient(circle_at_78%_24%,rgba(169,190,214,0.34),transparent_22%),linear-gradient(135deg,#fff9ef,#eadcc8)]"
       role="img"
       aria-label={`Placeholder lilin ${label}`}
     >

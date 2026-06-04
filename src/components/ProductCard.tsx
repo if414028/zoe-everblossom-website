@@ -6,7 +6,7 @@ import { ProductVisual } from "@/src/components/FloralOrnament";
 export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group rounded-[28px] border border-[rgba(200,164,93,0.42)] bg-[rgba(255,249,239,0.7)] p-4 shadow-[0_22px_60px_rgba(74,53,38,0.09)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(74,53,38,0.13)]">
-      <ProductVisual label={product.fullName} />
+      <ProductVisual image={product.image} label={product.fullName} />
       <div className="px-2 pb-2 pt-6">
         <div className="mb-4 flex items-center justify-between gap-3">
           <span className="rounded-full border border-[rgba(200,164,93,0.4)] bg-[rgba(248,241,228,0.86)] px-3 py-1 text-xs font-semibold text-[var(--deep-brown)]">
