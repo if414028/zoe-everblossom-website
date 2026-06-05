@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/src/components/Button";
-import { ProductVisual } from "@/src/components/FloralOrnament";
+import { ProductGallery } from "@/src/components/ProductGallery";
 import {
   createWhatsAppLink,
   getProductBySlug,
@@ -56,25 +56,11 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     <section className="luxury-section">
       <div className="mx-auto max-w-[1200px]">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div className="space-y-4">
-            <ProductVisual
-              image={product.image}
-              label={product.fullName}
-              preload
-            />
-            {!product.image && (
-              <div className="grid grid-cols-3 gap-4">
-                {[1, 2, 3].map((item) => (
-                  <div
-                    key={item}
-                    className="aspect-square rounded-[24px] border border-[rgba(200,164,93,0.32)] bg-[rgba(255,249,239,0.62)]"
-                    role="img"
-                    aria-label={`Placeholder galeri ${product.name} ${item}`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+          <ProductGallery
+            image={product.image}
+            gallery={product.gallery}
+            label={product.fullName}
+          />
           <div className="rounded-[32px] border border-[rgba(200,164,93,0.36)] bg-[rgba(255,249,239,0.7)] p-7 shadow-[0_24px_70px_rgba(74,53,38,0.09)] md:p-10">
             <span className="rounded-full border border-[rgba(200,164,93,0.42)] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[var(--champagne-gold)]">
               Lilin Soy Wax Buatan Tangan

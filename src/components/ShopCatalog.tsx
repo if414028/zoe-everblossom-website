@@ -8,11 +8,8 @@ import { cn } from "@/src/components/utils";
 
 const filters = [
   "Semua",
-  "Mini",
-  "Classic",
-  "Signature",
+  "Lilin Aromaterapi",
   "Hampers",
-  "Hadiah",
 ] as const;
 const sortOptions = [
   { label: "Pilihan Utama", value: "featured" },
@@ -33,23 +30,7 @@ export function ShopCatalog({ products }: { products: Product[] }) {
         return true;
       }
 
-      if (activeFilter === "Hadiah") {
-        const giftText = [product.badge, ...product.perfectFor]
-          .join(" ")
-          .toLowerCase();
-
-        return (
-          giftText.includes("hadiah") ||
-          giftText.includes("hampers") ||
-          giftText.includes("perayaan")
-        );
-      }
-
-      if (activeFilter === "Hampers") {
-        return product.category.toLowerCase() === "hampers";
-      }
-
-      return product.name.toLowerCase().includes(activeFilter.toLowerCase());
+      return product.category === activeFilter;
     });
 
     return [...filtered].sort((a, b) => {
