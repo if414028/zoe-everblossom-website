@@ -18,7 +18,7 @@ const navItems = [
 export function TopPromoBar() {
   return (
     <div className="bg-[var(--deep-brown)] px-5 py-2 text-center text-xs font-medium tracking-wide text-[var(--white-cream)]">
-      Gratis ongkir untuk pesanan tertentu - Dibuat dengan cinta di Indonesia
+      Dibuat dengan cinta di Indonesia
     </div>
   );
 }
@@ -137,7 +137,7 @@ export function Footer() {
         ))}
       </div>
       <div className="mx-auto mt-12 max-w-[1200px] border-t border-[rgba(255,249,239,0.14)] pt-6 text-sm text-[rgba(255,249,239,0.68)]">
-        © 2026 Zoe.Everblossom. Dibuat dengan cinta di Indonesia.
+        © 2026 Zoe.Everblossom. All rights reserved. Powered by Nesher Technology.
       </div>
     </footer>
   );
