@@ -8,6 +8,7 @@ import {
   getProductBySlug,
   products,
 } from "@/src/data/products";
+import { absoluteUrl, buildMetadata, jsonLd, siteConfig } from "@/src/lib/seo";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -25,14 +26,27 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Produk Tidak Ditemukan | Zoe.Everblossom",
+      title: "Produk Tidak Ditemukan",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  return {
-    title: `${product.fullName} | Zoe.Everblossom`,
-    description: product.longDescription,
-  };
+  return buildMetadata({
+    title: product.fullName,
+    description: `${product.longDescription} Harga ${product.formattedPrice}. Pesan lilin ${product.fragrance} buatan tangan Zoe.Everblossom via WhatsApp.`,
+    path: `/products/${product.slug}`,
+    image: product.image?.src,
+    keywords: [
+      product.fullName,
+      product.name,
+      product.category,
+      product.fragrance,
+      product.size,
+    ],
+  });
 }
 
 export default async function ProductDetailPage({ params }: ProductPageProps) {
@@ -51,9 +65,65 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     ["Sumbu", product.wick],
     ["Dibuat di", "Indonesia"],
   ];
+  const productImages = product.gallery ?? (product.image ? [product.image] : []);
 
   return (
     <section className="luxury-section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.fullName,
+          brand: {
+            "@type": "Brand",
+            name: siteConfig.name,
+          },
+          description: product.longDescription,
+          image: productImages.map((image) => absoluteUrl(image.src)),
+          category: product.category,
+          sku: product.slug,
+          material: product.wax,
+          offers: {
+            "@type": "Offer",
+            price: product.price,
+            priceCurrency: "IDR",
+            availability: "https://schema.org/InStock",
+            url: absoluteUrl(`/products/${product.slug}`),
+            seller: {
+              "@type": "Organization",
+              name: siteConfig.name,
+            },
+          },
+        })}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Beranda",
+              item: absoluteUrl("/"),
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Katalog",
+              item: absoluteUrl("/shop"),
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: product.fullName,
+              item: absoluteUrl(`/products/${product.slug}`),
+            },
+          ],
+        })}
+      />
       <div className="mx-auto max-w-[1200px]">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <ProductGallery

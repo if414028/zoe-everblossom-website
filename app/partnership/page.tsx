@@ -4,12 +4,15 @@ import { Button } from "@/src/components/Button";
 import { FeatureCard } from "@/src/components/Cards";
 import { SectionHeading } from "@/src/components/SectionHeading";
 import { createWhatsAppLink } from "@/src/data/products";
+import { buildMetadata } from "@/src/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kemitraan & Kolaborasi | Zoe.Everblossom",
+export const metadata: Metadata = buildMetadata({
+  title: "Kemitraan & Kolaborasi",
   description:
-    "Berkolaborasi dengan Zoe.Everblossom untuk souvenir pernikahan, hampers perusahaan, hadiah acara, dan kolaborasi brand.",
-};
+    "Berkolaborasi dengan Zoe.Everblossom untuk souvenir pernikahan, hampers perusahaan, hadiah acara, dan konsep lilin custom.",
+  path: "/partnership",
+  keywords: ["kolaborasi brand", "souvenir pernikahan lilin", "hampers perusahaan", "lilin custom"],
+});
 
 const opportunities = [
   "Souvenir Pernikahan",

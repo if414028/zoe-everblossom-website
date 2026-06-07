@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { FeatureCard } from "@/src/components/Cards";
 import { SectionHeading } from "@/src/components/SectionHeading";
+import { buildMetadata } from "@/src/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Tentang Zoe | Zoe.Everblossom",
+export const metadata: Metadata = buildMetadata({
+  title: "Tentang Zoe",
   description:
-    "Kenali hati, inspirasi, proses, dan harapan di balik lilin floral buatan tangan Zoe.Everblossom.",
-};
+    "Kenali Zoe.Everblossom, brand lilin floral buatan tangan dari Indonesia yang menghadirkan soy wax candle lembut untuk rumah dan hadiah.",
+  path: "/about",
+  keywords: ["brand lilin handmade", "tentang Zoe Everblossom", "lilin floral Indonesia"],
+});
 
 export default function AboutPage() {
   return (

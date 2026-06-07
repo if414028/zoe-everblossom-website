@@ -4,12 +4,15 @@ import { Button } from "@/src/components/Button";
 import { FeatureCard } from "@/src/components/Cards";
 import { SectionHeading } from "@/src/components/SectionHeading";
 import { createWhatsAppLink } from "@/src/data/products";
+import { buildMetadata } from "@/src/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hadiah & Hampers | Zoe.Everblossom",
+export const metadata: Metadata = buildMetadata({
+  title: "Hadiah & Hampers",
   description:
-    "Hadiah lilin dan hampers Zoe.Everblossom yang dibuat dengan indah untuk pemberian yang hangat dan berkesan.",
-};
+    "Pesan hadiah lilin dan hampers Zoe.Everblossom untuk bridesmaid, souvenir pernikahan, ulang tahun, perusahaan, dan momen penuh makna.",
+  path: "/gifts",
+  keywords: ["hampers lilin", "hadiah bridesmaid", "souvenir pernikahan", "hampers perusahaan"],
+});
 
 const categories = [
   "Hadiah Bridesmaid",

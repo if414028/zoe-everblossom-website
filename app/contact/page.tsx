@@ -3,12 +3,15 @@ import { Camera, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/src/components/Button";
 import { SectionHeading } from "@/src/components/SectionHeading";
 import { createWhatsAppLink } from "@/src/data/products";
+import { buildMetadata } from "@/src/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kontak | Zoe.Everblossom",
+export const metadata: Metadata = buildMetadata({
+  title: "Kontak",
   description:
-    "Hubungi Zoe.Everblossom untuk pemesanan lilin, hadiah, hampers, dan pertanyaan kolaborasi.",
-};
+    "Hubungi Zoe.Everblossom untuk pemesanan lilin handmade, konsultasi hadiah, hampers, souvenir, dan kolaborasi brand.",
+  path: "/contact",
+  keywords: ["kontak Zoe Everblossom", "pesan lilin WhatsApp", "konsultasi hampers"],
+});
 
 const contacts = [
   { title: "WhatsApp", value: "Pemesanan dan konsultasi", icon: MessageCircle },

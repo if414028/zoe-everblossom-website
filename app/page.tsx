@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera, MessageCircle } from "lucide-react";
@@ -7,6 +8,15 @@ import { Newsletter } from "@/src/components/Newsletter";
 import { ProductGrid } from "@/src/components/ProductCard";
 import { SectionHeading } from "@/src/components/SectionHeading";
 import { createWhatsAppLink, products } from "@/src/data/products";
+import { buildMetadata } from "@/src/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Lilin Floral Buatan Tangan",
+  description:
+    "Belanja lilin soy wax handmade Zoe.Everblossom dengan aroma Honey Lavender yang lembut untuk hadiah, hampers, dan ruang yang menenangkan.",
+  path: "/",
+  keywords: ["lilin floral", "lilin aromaterapi handmade", "soy wax candle Indonesia"],
+});
 
 const giftTypes = [
   "Hadiah Bridesmaid",
