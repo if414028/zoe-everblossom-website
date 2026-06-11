@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const fallbackSiteUrl = "https://zoe-everblossom.com";
+const fallbackSiteUrl = "https://zoeeverblossom.id";
 
 export const siteConfig = {
   name: "Zoe.Everblossom",
