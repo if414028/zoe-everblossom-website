@@ -10,6 +10,7 @@ const filters = [
   "Semua",
   "Lilin Aromaterapi",
   "Hampers",
+  "Souvenirs",
 ] as const;
 const sortOptions = [
   { label: "Pilihan Utama", value: "featured" },

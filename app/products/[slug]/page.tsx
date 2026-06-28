@@ -57,15 +57,21 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  const detailRows = [
-    ["Kategori", product.category],
-    ["Ukuran", product.size],
-    ["Aroma", product.fragrance],
-    ["Bahan Wax", product.wax],
-    ["Sumbu", product.wick],
-    ["Dibuat di", "Indonesia"],
+  const detailRows = product.details ?? [
+    { label: "Kategori", value: product.category },
+    { label: "Ukuran", value: product.size },
+    { label: "Aroma", value: product.fragrance },
+    { label: "Bahan Wax", value: product.wax },
+    { label: "Sumbu", value: product.wick },
+    { label: "Dibuat di", value: "Indonesia" },
   ];
   const productImages = product.gallery ?? (product.image ? [product.image] : []);
+  const productEyebrow =
+    product.category === "Souvenirs"
+      ? "Souvenir Hand Sanitizer"
+      : product.category === "Hampers"
+        ? "Hampers Spesial Zoe"
+        : "Lilin Soy Wax Buatan Tangan";
 
   return (
     <section className="luxury-section">
@@ -133,7 +139,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           />
           <div className="rounded-[32px] border border-[rgba(200,164,93,0.36)] bg-[rgba(255,249,239,0.7)] p-7 shadow-[0_24px_70px_rgba(74,53,38,0.09)] md:p-10">
             <span className="rounded-full border border-[rgba(200,164,93,0.42)] px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[var(--champagne-gold)]">
-              Lilin Soy Wax Buatan Tangan
+              {productEyebrow}
             </span>
             <h1 className="mt-6 font-serif text-5xl leading-tight text-[var(--deep-brown)] md:text-6xl">
               {product.fullName}
@@ -141,11 +147,11 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <p className="mt-4 text-2xl font-bold text-[var(--deep-brown)]">
               {product.formattedPrice}
             </p>
-            <p className="mt-5 leading-8 text-[var(--soft-brown)]">
+            <p className="mt-5 whitespace-pre-line leading-8 text-[var(--soft-brown)]">
               {product.longDescription}
             </p>
             <dl className="mt-8 grid gap-4 sm:grid-cols-2">
-              {detailRows.map(([label, value]) => (
+              {detailRows.map(({ label, value }) => (
                 <div
                   key={label}
                   className="rounded-3xl border border-[rgba(200,164,93,0.26)] bg-[rgba(248,241,228,0.62)] p-4"
@@ -185,18 +191,24 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               ))}
             </ul>
           </InfoBlock>
-          <InfoBlock title="Perawatan Lilin">
+          <InfoBlock title={product.careTitle ?? "Perawatan Lilin"}>
             <ul className="space-y-2">
-              <li>Potong sumbu sebelum setiap pemakaian</li>
-              <li>Biarkan permukaan wax mencair merata saat pembakaran pertama</li>
-              <li>Jauhkan dari anak-anak dan hewan peliharaan</li>
-              <li>Jangan tinggalkan lilin menyala tanpa pengawasan</li>
+              {(
+                product.careInstructions ?? [
+                  "Potong sumbu sebelum setiap pemakaian",
+                  "Biarkan permukaan wax mencair merata saat pembakaran pertama",
+                  "Jauhkan dari anak-anak dan hewan peliharaan",
+                  "Jangan tinggalkan lilin menyala tanpa pengawasan",
+                ]
+              ).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </InfoBlock>
-          <InfoBlock title="Catatan Keamanan">
+          <InfoBlock title={product.safetyTitle ?? "Catatan Keamanan"}>
             <p>
-              Nyalakan dalam pengawasan, letakkan di permukaan tahan panas, dan
-              hentikan pemakaian saat wax tersisa sedikit.
+              {product.safetyDescription ??
+                "Nyalakan dalam pengawasan, letakkan di permukaan tahan panas, dan hentikan pemakaian saat wax tersisa sedikit."}
             </p>
           </InfoBlock>
         </div>

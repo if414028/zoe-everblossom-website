@@ -3,6 +3,11 @@ export type ProductImage = {
   alt: string;
 };
 
+export type ProductDetail = {
+  label: string;
+  value: string;
+};
+
 export type Product = {
   id: string;
   slug: string;
@@ -20,6 +25,11 @@ export type Product = {
   badge: string;
   image?: ProductImage;
   gallery?: ProductImage[];
+  details?: ProductDetail[];
+  careTitle?: string;
+  careInstructions?: string[];
+  safetyTitle?: string;
+  safetyDescription?: string;
   perfectFor: string[];
   notes: {
     top: string;
@@ -161,39 +171,6 @@ export const products: Product[] = [
   },
   {
     id: "04",
-    slug: "zoe-hampers-lebaran",
-    name: "Zoe Hampers Lebaran",
-    size: "Limited Eid Hampers",
-    fullName: "Zoe Hampers Lebaran",
-    price: 385000,
-    formattedPrice: "IDR 385.000",
-    category: "Hampers",
-    fragrance: "Honey Lavender",
-    wax: "Soy Wax",
-    wick: "Sumbu Katun",
-    description:
-      "Limited Eid Hampers penuh makna untuk Lebaran yang hangat dan berkesan.",
-    longDescription:
-      "Lebaran adalah tentang kehangatan, cahaya, dan kebersamaan. Zoe Everblossom menghadirkan Limited Eid Hampers yang memadukan Candle Zoe Honey Lavender, Candle Zoe flower yang cantik dan timeless, carousel jar multifungsi, Nastar Premium, serta kurma pilihan terbaik. Satu box penuh makna dengan stok sangat terbatas.",
-    badge: "Limited Hampers",
-    image: {
-      src: "/images/zoe-hampers-lebaran.jpeg",
-      alt: "Zoe Hampers Lebaran berisi Honey Lavender candle, nastar, kurma, dan flower candle",
-    },
-    perfectFor: [
-      "Hampers Lebaran",
-      "Hadiah keluarga",
-      "Perayaan bermakna",
-      "Ucapan hangat",
-    ],
-    notes: {
-      top: "Floral Lembut",
-      heart: "Lavender",
-      base: "Madu Hangat",
-    },
-  },
-  {
-    id: "05",
     slug: "honey-lavender-clear",
     name: "Honey Lavender Clear",
     size: "250ml",
@@ -227,6 +204,146 @@ export const products: Product[] = [
       },
     ],
     perfectFor: ["Ruang keluarga", "Kamar tidur", "Ruang kerja", "Spa"],
+    notes: {
+      top: "Floral Lembut",
+      heart: "Lavender",
+      base: "Madu Hangat",
+    },
+  },
+  {
+    id: "05",
+    slug: "zoe-signature-hand-sanitizer",
+    name: "Zoe Signature Hand Sanitizer",
+    size: "10ml",
+    fullName: "Zoe Signature Hand Sanitizer",
+    price: 14200,
+    formattedPrice: "IDR 14.200",
+    category: "Souvenirs",
+    fragrance: "Floral Lembut",
+    wax: "Hand Sanitizer",
+    wick: "Custom Label",
+    description:
+      "Hadiah kecil yang membawa kehangatan, keindahan, dan wangi yang berkesan.",
+    longDescription:
+      "Hadiah kecil yang membawa kehangatan, keindahan, dan wangi yang berkesan ✨\n\nSouvenir candle dari Zoe Everblossom hadir sebagai pilihan elegan untuk melengkapi momen spesialmu. Dengan tampilan yang cantik, aroma yang lembut, dan nuansa hangat saat dinyalakan, candle ini bukan hanya menjadi souvenir, tetapi juga pengalaman manis untuk setiap penerima.\n\nCocok untuk berbagai acara spesial seperti pernikahan, ulang tahun, bridal shower, baby shower, corporate event, hampers, gathering, hingga momen intimate bersama orang terkasih.",
+    badge: "Souvenir Elegan",
+    image: {
+      src: "/images/zoe-signature-hand-sanitizer.png",
+      alt: "Zoe Signature Hand Sanitizer souvenir dengan label floral dan dekorasi mutiara",
+    },
+    details: [
+      ["Kategori", "Souvenirs"],
+      ["Jenis", "Hand Sanitizer"],
+      ["Aroma", "Floral Lembut"],
+      ["Detail", "Custom Label"],
+      ["Dibuat di", "Indonesia"],
+    ].map(([label, value]) => ({ label, value })),
+    careTitle: "Catatan Souvenir",
+    careInstructions: [
+      "Dapat disesuaikan untuk nama, tanggal, atau tema acara",
+      "Cocok untuk pemesanan souvenir dalam jumlah banyak",
+      "Simpan di tempat sejuk dan hindari panas berlebih",
+      "Hubungi Zoe.Everblossom untuk konsultasi desain label",
+    ],
+    safetyTitle: "Catatan Pemakaian",
+    safetyDescription:
+      "Gunakan sesuai kebutuhan, hindari area mata, dan jauhkan dari jangkauan anak-anak tanpa pengawasan.",
+    perfectFor: [
+      "Pernikahan",
+      "Ulang tahun",
+      "Bridal shower",
+      "Baby shower",
+      "Corporate event",
+      "Hampers",
+      "Gathering",
+    ],
+    notes: {
+      top: "Floral Lembut",
+      heart: "Sentuhan Bersih",
+      base: "Kesan Hangat",
+    },
+  },
+  {
+    id: "06",
+    slug: "zoe-glassy-hand-sanitizer",
+    name: "Zoe Glassy Hand Sanitizer",
+    size: "10ml",
+    fullName: "Zoe Glassy Hand Sanitizer",
+    price: 15500,
+    formattedPrice: "IDR 15.500",
+    category: "Souvenirs",
+    fragrance: "Floral Lembut",
+    wax: "Hand Sanitizer",
+    wick: "Botol Kaca",
+    description:
+      "Hand sanitizer souvenir 10ml dalam botol kaca dengan tampilan lebih elegan dan premium.",
+    longDescription:
+      "Hand sanitizer souvenir 10ml dalam botol kaca dengan tampilan lebih elegan dan premium.\n\nHadiah kecil yang membawa kehangatan, keindahan, dan wangi yang berkesan ✨\n\nSouvenir candle dari Zoe Everblossom hadir sebagai pilihan elegan untuk melengkapi momen spesialmu. Dengan tampilan yang cantik, aroma yang lembut, dan nuansa hangat saat dinyalakan, candle ini bukan hanya menjadi souvenir, tetapi juga pengalaman manis untuk setiap penerima.\n\nCocok untuk berbagai acara spesial seperti pernikahan, ulang tahun, bridal shower, baby shower, corporate event, hampers, gathering, hingga momen intimate bersama orang terkasih.",
+    badge: "Premium Glass",
+    image: {
+      src: "/images/zoe-glassy-hand-sanitizer.png",
+      alt: "Zoe Glassy Hand Sanitizer 10ml dalam botol kaca dengan pita dan pouch souvenir",
+    },
+    details: [
+      ["Kategori", "Souvenirs"],
+      ["Jenis", "Hand Sanitizer"],
+      ["Ukuran", "10ml"],
+      ["Kemasan", "Botol Kaca"],
+      ["Aroma", "Floral Lembut"],
+      ["Dibuat di", "Indonesia"],
+    ].map(([label, value]) => ({ label, value })),
+    careTitle: "Catatan Souvenir",
+    careInstructions: [
+      "Dapat disesuaikan untuk nama, tanggal, atau tema acara",
+      "Cocok untuk pemesanan souvenir dalam jumlah banyak",
+      "Simpan di tempat sejuk dan hindari panas berlebih",
+      "Hubungi Zoe.Everblossom untuk konsultasi desain label",
+    ],
+    safetyTitle: "Catatan Pemakaian",
+    safetyDescription:
+      "Gunakan sesuai kebutuhan, hindari area mata, dan jauhkan dari jangkauan anak-anak tanpa pengawasan.",
+    perfectFor: [
+      "Pernikahan",
+      "Ulang tahun",
+      "Bridal shower",
+      "Baby shower",
+      "Corporate event",
+      "Hampers",
+      "Gathering",
+    ],
+    notes: {
+      top: "Floral Lembut",
+      heart: "Sentuhan Bersih",
+      base: "Kesan Premium",
+    },
+  },
+  {
+    id: "07",
+    slug: "zoe-hampers-lebaran",
+    name: "Zoe Hampers Lebaran",
+    size: "Limited Eid Hampers",
+    fullName: "Zoe Hampers Lebaran",
+    price: 385000,
+    formattedPrice: "IDR 385.000",
+    category: "Hampers",
+    fragrance: "Honey Lavender",
+    wax: "Soy Wax",
+    wick: "Sumbu Katun",
+    description:
+      "Limited Eid Hampers penuh makna untuk Lebaran yang hangat dan berkesan.",
+    longDescription:
+      "Lebaran adalah tentang kehangatan, cahaya, dan kebersamaan. Zoe Everblossom menghadirkan Limited Eid Hampers yang memadukan Candle Zoe Honey Lavender, Candle Zoe flower yang cantik dan timeless, carousel jar multifungsi, Nastar Premium, serta kurma pilihan terbaik. Satu box penuh makna dengan stok sangat terbatas.",
+    badge: "Limited Hampers",
+    image: {
+      src: "/images/zoe-hampers-lebaran.jpeg",
+      alt: "Zoe Hampers Lebaran berisi Honey Lavender candle, nastar, kurma, dan flower candle",
+    },
+    perfectFor: [
+      "Hampers Lebaran",
+      "Hadiah keluarga",
+      "Perayaan bermakna",
+      "Ucapan hangat",
+    ],
     notes: {
       top: "Floral Lembut",
       heart: "Lavender",
